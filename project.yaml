@@ -11,4 +11,7 @@ technologies:
   - Security
   - Integration
   - Cross-Stack
-product_repositories: []
+product_repositories:
+  - name: Atra-Services
+    remote: https://github.com/SampleApp05/Atra-Services.git
+    base_branch: main
