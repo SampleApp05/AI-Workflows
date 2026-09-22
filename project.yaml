@@ -1,0 +1,14 @@
+project: Atra
+artifact_contract: ARTIFACT-CONTRACT-v1.1.md
+workflow_id_scope: project
+technologies:
+  - Backend
+  - Database
+  - Web
+  - iOS
+  - Android
+  - Infrastructure
+  - Security
+  - Integration
+  - Cross-Stack
+product_repositories: []
