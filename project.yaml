@@ -1,5 +1,5 @@
 project: Atra
-artifact_contract: ARTIFACT-CONTRACT-v1.1.md
+artifact_contract: ARTIFACT-CONTRACT-v1.2.md
 workflow_id_scope: project
 technologies:
   - Backend
