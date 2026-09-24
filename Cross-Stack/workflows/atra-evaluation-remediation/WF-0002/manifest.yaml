@@ -1,0 +1,108 @@
+contract_version: "1.2"
+workflow:
+  id: WF-0002
+  project: Atra
+  technology: Cross-Stack
+  feature: atra-evaluation-remediation
+  mode: delivery
+  status: APPROVED
+  current_stage: execution
+source_context:
+  - type: workflow_artifact
+    workflow_id: WF-0001
+    path: Cross-Stack/workflows/phase-foundation-evaluation/WF-0001/workflow_orchestrator/workflow-run-report-v3.md
+    role: verified evaluation findings
+  - type: workflow_artifact
+    workflow_id: WF-0001
+    path: Cross-Stack/workflows/phase-foundation-evaluation/WF-0001/test_engineer/test-report-v1.md
+    role: detailed evidence
+  - type: user_request
+    role: authorization to enter a delivery workflow for the fixes and changes discussed by the evaluation
+product_repositories:
+  - name: Atra-Services
+    remote: https://github.com/SampleApp05/Atra-Services.git
+    base_branch: main
+    baseline:
+      branch: main
+      commit: be51242593fe6643aff11c491d4f8a6c0835aed5
+      state: clean at observation before delivery intake
+controller:
+  role: workflow_orchestrator
+  engine: codex
+  target_id: codex-native
+  handover:
+    status: not-handed-over
+    recorded_by: workflow_orchestrator
+    record: null
+artifacts:
+  handoff: HAND-0002@v1
+  handoff_summary: HSUM-0002@v1
+  orchestration_plan: OPLAN-0002@v1
+  definition: DEF-0002@v1
+  architecture: ARC-0002@v2
+  requirements: REQ-0002@v1
+  decomposition: DEC-0002@v1
+  routing: ROUTE-0002@v2
+  execution: null
+  test: null
+  review: null
+  run_report: null
+gates:
+  plan: APPROVED (HAPP-0002@v1)
+  execution: APPROVED (HAPP-0003@v1)
+pull_requests:
+  artifacts:
+    owner: workflow_orchestrator
+    repository: https://github.com/SampleApp05/AI-Workflows.git
+    base: main
+    head: workflow/WF-0002-atra-evaluation-remediation
+    url: null
+    status: REQUIRED
+  products:
+    - owner: execution_coordinator
+      repository: https://github.com/SampleApp05/Atra-Services.git
+      base: main
+      head: workflow/WF-0002-atra-evaluation-remediation
+      url: null
+      status: REQUIRED
+stage_assignments:
+  - stage: definition
+    role: problem_analyst
+    preferred_target: codex-native
+    actual_target: codex-native
+    rationale: approved source-bound outcome definition and healthy native capacity at dispatch
+    fallback_chain: [claude-cli]
+    health_observation: 72% five-hour and 41% weekly capacity remaining; resets 1790242664 and 1790655174
+    scope: problem_analyst/definition-v1.md
+  - stage: architecture
+    role: solution_architect
+    preferred_target: claude-cli
+    actual_target: codex-native (approved fallback)
+    rationale: Claude preflight returned READY, but the durable dispatch rejected the prompt before work because it lacked the required exact artifact-path marker; use the approved native fallback without retrying Claude
+    fallback_chain: [codex-native]
+    health_observation: claude -p readiness PASS; durable dispatch invalid before artifact/product access; native fallback dispatched with 60% five-hour and 39% weekly capacity remaining; resets 1790242664 and 1790655174
+    scope: solution_architect/architecture-v1.md
+  - stage: requirements
+    role: requirements_engineer
+    preferred_target: codex-native
+    actual_target: codex-native
+    rationale: approved source-to-contract stage with healthy native capacity at dispatch
+    fallback_chain: [claude-cli]
+    health_observation: 43% five-hour and 37% weekly capacity remaining; resets 1790242664 and 1790655174
+    scope: requirements_engineer/requirements-v1.md
+  - stage: decomposition
+    role: work_planner
+    preferred_target: claude-cli
+    actual_target: claude-cli
+    rationale: approved independent decomposition stage; host preflight returned READY at dispatch
+    fallback_chain: [codex-native]
+    health_observation: claude -p readiness PASS; provider usage and reset unavailable
+    scope: work_planner/decomposition-v1.md
+  - stage: routing
+    role: execution_router
+    preferred_target: codex-native
+    actual_target: codex-native
+    rationale: approved routing stage with fresh native capacity; must verify product and PR facts before execution approval
+    fallback_chain: [claude-cli]
+    health_observation: 21% five-hour and 33% weekly capacity remaining; resets 1790242664 and 1790655174
+    scope: execution_router/routing-plan-v1.md
