@@ -1,0 +1,103 @@
+contract_version: "1.2"
+workflow:
+  id: WF-0001
+  project: Atra
+  technology: Cross-Stack
+  feature: phase-foundation-evaluation
+  mode: evaluation
+  status: BLOCKED
+  current_stage: evaluation-test-failed
+source_context:
+  - type: chatgpt_thread
+    id: 6aaebb64-ecc0-83ed-a8e7-29ed8d241dab
+    title: Current Atra Phases Summary
+    role: authoritative intended-state reference
+product_repositories:
+  - name: Atra-Services
+    remote: https://github.com/SampleApp05/Atra-Services.git
+    base_branch: main
+    baseline:
+      branch: main
+      commit: be51242593fe6643aff11c491d4f8a6c0835aed5
+      state: clean and up to date with origin/main at observation
+controller:
+  role: workflow_orchestrator
+  engine: codex
+  target_id: codex-native
+  handover:
+    status: not-handed-over
+    recorded_by: workflow_orchestrator
+    record: null
+artifacts:
+  handoff: HAND-0001@v1
+  handoff_summary: HSUM-0001@v1
+  orchestration_plan: OPLAN-0001@v1
+  definition: DEF-0001@v1
+  architecture: ARC-0001@v1
+  requirements: REQ-0001@v1
+  evaluation_test: TEST-0001@v1
+  evaluation_review: null
+  run_report: WRUN-0001@v2
+gates:
+  plan: APPROVED (HAPP-0001@v1)
+  execution: NOT_APPLICABLE
+pull_requests:
+  artifacts:
+    owner: workflow_orchestrator
+    repository: https://github.com/SampleApp05/AI-Workflows.git
+    base: main
+    head: workflow/WF-0001-phase-foundation-evaluation
+    url: null
+    status: REQUIRED
+  products:
+    status: NOT_APPLICABLE
+    evidence: evaluation mode; product edits and product pull requests are excluded
+stage_assignments:
+  - stage: handoff
+    role: intake_analyst
+    preferred_target: codex-native
+    actual_target: codex-native
+    rationale: preserve source intent in a formal, read-only evaluation handoff
+    fallback_chain: [claude-cli]
+    health_observation: usage checked at dispatch; 96% five-hour and 57% weekly capacity remaining
+    scope: intake_analyst/handoff-v1.md and intake_analyst/handoff-summary-v1.md
+  - stage: definition
+    role: problem_analyst
+    preferred_target: codex-native
+    actual_target: codex-native
+    rationale: source-bound scope analysis and close controller coordination
+    fallback_chain: [claude-cli]
+    health_observation: usage checked at dispatch; 89% five-hour and 56% weekly capacity remaining
+    scope: problem_analyst/definition-v1.md
+  - stage: architecture
+    role: solution_architect
+    preferred_target: claude-cli
+    actual_target: codex-native (approved fallback)
+    rationale: claude-cli was unavailable at dispatch because its CLI session was not logged in; use the plan-approved native fallback for existing-system assessment
+    fallback_chain: [codex-native]
+    health_observation: claude --version 2.1.278 observed, but durable job failed authentication before artifact work; native usage checked at fallback dispatch with 81% five-hour and 55% weekly capacity remaining
+    scope: solution_architect/architecture-v1.md
+  - stage: requirements
+    role: requirements_engineer
+    preferred_target: codex-native
+    actual_target: codex-native
+    rationale: traceable evaluation criteria with source limitations retained
+    fallback_chain: [claude-cli]
+    health_observation: usage read before dispatch; detailed timing not recorded
+    scope: requirements_engineer/requirements-v1.md
+  - stage: evaluation-test
+    role: test_engineer
+    preferred_target: codex-native
+    actual_target: codex-native
+    rationale: read-only coverage and test evidence analysis
+    fallback_chain: [claude-cli]
+    health_observation: usage read before dispatch; detailed timing not recorded
+    scope: test_engineer/test-report-v1.md
+  - stage: evaluation-review
+    role: code_reviewer
+    preferred_target: claude-cli
+    actual_target: pending approval
+    rationale: independent review from the proposed Test engine
+    fallback_chain: [codex-native]
+    health_observation: pending dispatch
+    scope: code_reviewer/review-v1.md
