@@ -62,7 +62,7 @@ pull_requests:
     - owner: execution_coordinator
       repository: https://github.com/SampleApp05/Atra-Services.git
       base: main
-      head: null
+      head: workflow/WF-0002-atra-evaluation-remediation
       url: null
       status: REQUIRED
 stage_assignments:
