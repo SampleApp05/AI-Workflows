@@ -5,8 +5,8 @@ workflow:
   technology: Cross-Stack
   feature: atra-evaluation-remediation
   mode: delivery
-  status: VALIDATED
-  current_stage: execution-gate
+  status: APPROVED
+  current_stage: execution
 source_context:
   - type: workflow_artifact
     workflow_id: WF-0001
@@ -49,7 +49,7 @@ artifacts:
   run_report: null
 gates:
   plan: APPROVED (HAPP-0002@v1)
-  execution: PENDING
+  execution: APPROVED (HAPP-0003@v1)
 pull_requests:
   artifacts:
     owner: workflow_orchestrator
