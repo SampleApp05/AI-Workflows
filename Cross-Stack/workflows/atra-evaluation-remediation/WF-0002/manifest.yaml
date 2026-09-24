@@ -6,7 +6,7 @@ workflow:
   feature: atra-evaluation-remediation
   mode: delivery
   status: VALIDATED
-  current_stage: decomposition
+  current_stage: routing
 source_context:
   - type: workflow_artifact
     workflow_id: WF-0001
@@ -41,7 +41,7 @@ artifacts:
   definition: DEF-0002@v1
   architecture: ARC-0002@v2
   requirements: REQ-0002@v1
-  decomposition: null
+  decomposition: DEC-0002@v1
   routing: null
   execution: null
   test: null
@@ -90,3 +90,11 @@ stage_assignments:
     fallback_chain: [claude-cli]
     health_observation: 43% five-hour and 37% weekly capacity remaining; resets 1790242664 and 1790655174
     scope: requirements_engineer/requirements-v1.md
+  - stage: decomposition
+    role: work_planner
+    preferred_target: claude-cli
+    actual_target: claude-cli
+    rationale: approved independent decomposition stage; host preflight returned READY at dispatch
+    fallback_chain: [codex-native]
+    health_observation: claude -p readiness PASS; provider usage and reset unavailable
+    scope: work_planner/decomposition-v1.md
