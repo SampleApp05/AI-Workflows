@@ -1,0 +1,68 @@
+contract_version: "1.2"
+workflow:
+  id: WF-0002
+  project: Atra
+  technology: Cross-Stack
+  feature: atra-evaluation-remediation
+  mode: delivery
+  status: APPROVED
+  current_stage: definition
+source_context:
+  - type: workflow_artifact
+    workflow_id: WF-0001
+    path: Cross-Stack/workflows/phase-foundation-evaluation/WF-0001/workflow_orchestrator/workflow-run-report-v3.md
+    role: verified evaluation findings
+  - type: workflow_artifact
+    workflow_id: WF-0001
+    path: Cross-Stack/workflows/phase-foundation-evaluation/WF-0001/test_engineer/test-report-v1.md
+    role: detailed evidence
+  - type: user_request
+    role: authorization to enter a delivery workflow for the fixes and changes discussed by the evaluation
+product_repositories:
+  - name: Atra-Services
+    remote: https://github.com/SampleApp05/Atra-Services.git
+    base_branch: main
+    baseline:
+      branch: main
+      commit: be51242593fe6643aff11c491d4f8a6c0835aed5
+      state: clean at observation before delivery intake
+controller:
+  role: workflow_orchestrator
+  engine: codex
+  target_id: codex-native
+  handover:
+    status: not-handed-over
+    recorded_by: workflow_orchestrator
+    record: null
+artifacts:
+  handoff: HAND-0002@v1
+  handoff_summary: HSUM-0002@v1
+  orchestration_plan: OPLAN-0002@v1
+  definition: null
+  architecture: null
+  requirements: null
+  decomposition: null
+  routing: null
+  execution: null
+  test: null
+  review: null
+  run_report: null
+gates:
+  plan: APPROVED (HAPP-0002@v1)
+  execution: PENDING
+pull_requests:
+  artifacts:
+    owner: workflow_orchestrator
+    repository: https://github.com/SampleApp05/AI-Workflows.git
+    base: main
+    head: workflow/WF-0002-atra-evaluation-remediation
+    url: null
+    status: REQUIRED
+  products:
+    - owner: execution_coordinator
+      repository: https://github.com/SampleApp05/Atra-Services.git
+      base: main
+      head: null
+      url: null
+      status: REQUIRED
+stage_assignments: []
