@@ -60,7 +60,7 @@ Completion means the approved delivery stages, Test, independent Review, and bot
 
 - Product: [SampleApp05/Atra-Services #3](https://github.com/SampleApp05/Atra-Services/pull/3), `main` ← `workflow/WF-0002-atra-evaluation-remediation`, head `f6d40d7e3e39c540fbc8f94f331db2c5baac3d70`, verified **MERGED** at `2026-09-24T18:35:08Z`.
 - Artifact: [SampleApp05/AI-Workflows #4](https://github.com/SampleApp05/AI-Workflows/pull/4), `main` ← `workflow/WF-0002-atra-evaluation-remediation`, head `bdfb2e8f0f10cc1c6b82f57e778c0b6d1bf54cda`, verified **MERGED** at `2026-09-24T18:35:46Z`.
-- Publication exception: PR #4 merged before this final report and closeout records were authored. This record is retained on the workflow branch at post-merge closeout commit `a2564186c0cec15382b8db798ae0db93276fcc0a`; it was not included in the already merged PR. No additional artifact PR is created because Contract v1.2 permits exactly one artifact PR per run.
+- Publication exception resolved by explicit user direction: PR #4 merged before this final report and closeout records were authored, so the user authorized the follow-up [SampleApp05/AI-Workflows #5](https://github.com/SampleApp05/AI-Workflows/pull/5). It is verified `OPEN` from `workflow/WF-0002-atra-evaluation-remediation` to `main` at initial head `dc351ee6ec06a62096f79b98ec662142f65f8dfc`; it publishes these closeout records without rewriting PR #4 history.
 
 ## Evidence and residual risk
 
@@ -76,4 +76,4 @@ The journal records the plan and execution gates, the architecture and routing b
 
 ## Required human action
 
-None to complete this governed delivery run. If the final report itself must be present on `main`, it requires a separately authorized publication policy exception or follow-up because the run's sole artifact PR is already merged.
+Review and merge artifact PR #5 if the final workflow records should be published to `main`. Product delivery is already merged; no product action is required.

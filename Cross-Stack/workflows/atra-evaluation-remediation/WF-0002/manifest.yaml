@@ -61,7 +61,14 @@ pull_requests:
     verified_state: MERGED
     merged_at: 2026-09-24T18:35:46Z
     verified_head_commit: bdfb2e8f0f10cc1c6b82f57e778c0b6d1bf54cda
-    publication_exception: Merged before WRUN-0002@v1 was authored; this final controller record is retained on the workflow branch at post-merge closeout commit a2564186c0cec15382b8db798ae0db93276fcc0a and was not part of PR #4.
+    publication_exception: PR #4 merged before WRUN-0002@v1 was authored. The user explicitly authorized follow-up artifact PR #5 to publish the closeout without rewriting PR #4 history.
+    follow_up:
+      url: https://github.com/SampleApp05/AI-Workflows/pull/5
+      status: OPEN
+      base: main
+      head: workflow/WF-0002-atra-evaluation-remediation
+      verified_head_commit: dc351ee6ec06a62096f79b98ec662142f65f8dfc
+      authorized_by: user request in this task to create another PR with the workflow changes
   products:
     - owner: execution_coordinator
       repository: https://github.com/SampleApp05/Atra-Services.git
