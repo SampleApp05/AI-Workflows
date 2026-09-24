@@ -5,8 +5,8 @@ workflow:
   technology: Cross-Stack
   feature: atra-evaluation-remediation
   mode: delivery
-  status: BLOCKED
-  current_stage: architecture
+  status: VALIDATED
+  current_stage: requirements
 source_context:
   - type: workflow_artifact
     workflow_id: WF-0001
@@ -39,7 +39,7 @@ artifacts:
   handoff_summary: HSUM-0002@v1
   orchestration_plan: OPLAN-0002@v1
   definition: DEF-0002@v1
-  architecture: ARC-0002@v1
+  architecture: ARC-0002@v2
   requirements: null
   decomposition: null
   routing: null
