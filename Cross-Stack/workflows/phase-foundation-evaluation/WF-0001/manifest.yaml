@@ -37,7 +37,7 @@ artifacts:
   requirements: REQ-0001@v1
   evaluation_test: TEST-0001@v1
   evaluation_review: null
-  run_report: WRUN-0001@v2
+  run_report: WRUN-0001@v3
 gates:
   plan: APPROVED (HAPP-0001@v1)
   execution: NOT_APPLICABLE
@@ -47,8 +47,11 @@ pull_requests:
     repository: https://github.com/SampleApp05/AI-Workflows.git
     base: main
     head: workflow/WF-0001-phase-foundation-evaluation
-    url: null
-    status: REQUIRED
+    url: https://github.com/SampleApp05/AI-Workflows/pull/3
+    status: OPEN
+    verified_state: OPEN
+    initial_publication_commit: d83493e51af800768f145ba12243b18b9c3fb8c9
+    verified_at: 2026-09-24T04:41:44Z
   products:
     status: NOT_APPLICABLE
     evidence: evaluation mode; product edits and product pull requests are excluded
@@ -73,9 +76,9 @@ stage_assignments:
     role: solution_architect
     preferred_target: claude-cli
     actual_target: codex-native (approved fallback)
-    rationale: claude-cli was unavailable at dispatch because its CLI session was not logged in; use the plan-approved native fallback for existing-system assessment
+    rationale: sandboxed claude-cli dispatch could not access the authenticated host session; use the plan-approved native fallback for existing-system assessment
     fallback_chain: [codex-native]
-    health_observation: claude --version 2.1.278 observed, but durable job failed authentication before artifact work; native usage checked at fallback dispatch with 81% five-hour and 55% weekly capacity remaining
+    health_observation: claude --version 2.1.278 observed, but durable sandboxed job reported Not logged in before artifact work; later unsandboxed claude -p returned READY; native usage checked at fallback dispatch with 81% five-hour and 55% weekly capacity remaining
     scope: solution_architect/architecture-v1.md
   - stage: requirements
     role: requirements_engineer
