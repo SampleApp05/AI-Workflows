@@ -6,7 +6,7 @@ workflow:
   feature: atra-evaluation-remediation
   mode: delivery
   status: APPROVED
-  current_stage: definition
+  current_stage: architecture
 source_context:
   - type: workflow_artifact
     workflow_id: WF-0001
@@ -38,7 +38,7 @@ artifacts:
   handoff: HAND-0002@v1
   handoff_summary: HSUM-0002@v1
   orchestration_plan: OPLAN-0002@v1
-  definition: null
+  definition: DEF-0002@v1
   architecture: null
   requirements: null
   decomposition: null
@@ -65,4 +65,12 @@ pull_requests:
       head: null
       url: null
       status: REQUIRED
-stage_assignments: []
+stage_assignments:
+  - stage: definition
+    role: problem_analyst
+    preferred_target: codex-native
+    actual_target: codex-native
+    rationale: approved source-bound outcome definition and healthy native capacity at dispatch
+    fallback_chain: [claude-cli]
+    health_observation: 72% five-hour and 41% weekly capacity remaining; resets 1790242664 and 1790655174
+    scope: problem_analyst/definition-v1.md
