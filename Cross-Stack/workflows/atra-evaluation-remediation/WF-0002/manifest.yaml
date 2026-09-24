@@ -5,7 +5,7 @@ workflow:
   technology: Cross-Stack
   feature: atra-evaluation-remediation
   mode: delivery
-  status: APPROVED
+  status: BLOCKED
   current_stage: architecture
 source_context:
   - type: workflow_artifact
@@ -39,7 +39,7 @@ artifacts:
   handoff_summary: HSUM-0002@v1
   orchestration_plan: OPLAN-0002@v1
   definition: DEF-0002@v1
-  architecture: null
+  architecture: ARC-0002@v1
   requirements: null
   decomposition: null
   routing: null
@@ -74,3 +74,11 @@ stage_assignments:
     fallback_chain: [claude-cli]
     health_observation: 72% five-hour and 41% weekly capacity remaining; resets 1790242664 and 1790655174
     scope: problem_analyst/definition-v1.md
+  - stage: architecture
+    role: solution_architect
+    preferred_target: claude-cli
+    actual_target: codex-native (approved fallback)
+    rationale: Claude preflight returned READY, but the durable dispatch rejected the prompt before work because it lacked the required exact artifact-path marker; use the approved native fallback without retrying Claude
+    fallback_chain: [codex-native]
+    health_observation: claude -p readiness PASS; durable dispatch invalid before artifact/product access; native fallback dispatched with 60% five-hour and 39% weekly capacity remaining; resets 1790242664 and 1790655174
+    scope: solution_architect/architecture-v1.md
